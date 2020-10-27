@@ -35,7 +35,7 @@ parser = argparse.ArgumentParser(description='Training Deep Neural Networks')
 parser.add_argument('--data_dir',type=str,default='/media/Disk1/KunFang/data/CIFAR10/',help='file path for data')
 parser.add_argument('--model_dir',type=str,default='./save/',help='file path for saving model')
 parser.add_argument('--dataset',type=str,default='CIFAR10',help='data set name')
-parser.add_argument('--arch',type=str,default='OMP_c',help='architecture of OMP model, alternative value include OMP_a, OMP_b and OMP_c')
+parser.add_argument('--arch',type=str,default='OMPc',help='architecture of OMP model, alternative value include OMPa, OMPb and OMPc')
 parser.add_argument('--model',type=str,default='vgg16',help='model name')
 # -------- training param. ----------
 parser.add_argument('--batch_size',type=int,default=512,help='batch size for training (default: 256)')    
@@ -81,49 +81,49 @@ def main():
 
     # ======== initialize net
     if args.model == 'vgg11':
-        if args.arch == 'OMP_c':
+        if args.arch == 'OMPc':
             from model.OMP_c_vgg import vgg11_bn
             net = vgg11_bn(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'vgg13':
-        if args.arch == 'OMP_c':
+        if args.arch == 'OMPc':
             from model.OMP_c_vgg import vgg13_bn
             net = vgg13_bn(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'vgg16':
-        if args.arch == 'OMP_a':
+        if args.arch == 'OMPa':
             from model.OMP_a_vgg import vgg16_bn
             net = vgg16_bn(args.num_classes, args.num_paths).cuda()
-        elif args.arch == 'OMP_b':
+        elif args.arch == 'OMPb':
             from model.OMP_b_vgg import vgg16_bn
             net = vgg16_bn(args.num_classes, args.num_paths).cuda()
-        elif args.arch == 'OMP_c':
+        elif args.arch == 'OMPc':
             from model.OMP_c_vgg import vgg16_bn
             net = vgg16_bn(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unknown architecture : {}".format(args.arch)
     elif args.model == 'vgg19':
-        if args.arch == 'OMP_c':
+        if args.arch == 'OMPc':
             from model.OMP_c_vgg import vgg19_bn
             net = vgg19_bn(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'resnet20':
-        if args.arch == 'OMP_a':
+        if args.arch == 'OMPa':
             from model.OMP_a_resnet_v1 import resnet20
             net = resnet20(args.num_classes, args.num_paths).cuda()
-        elif args.arch == 'OMP_b':
+        elif args.arch == 'OMPb':
             from model.OMP_b_resnet_v1 import resnet20
             net = resnet20(args.num_classes, args.num_paths).cuda()
-        elif args.arch == 'OMP_c':
+        elif args.arch == 'OMPc':
             from model.OMP_c_resnet_v1 import resnet20
             net = resnet20(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unknown architecture : {}".format(args.arch)
     elif args.model == 'resnet32':
-        if args.arch == 'OMP_c':
+        if args.arch == 'OMPc':
             from model.OMP_c_resnet_v1 import resnet32
             net = resnet32(args.num_classes, args.num_paths).cuda()
         else:

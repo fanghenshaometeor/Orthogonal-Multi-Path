@@ -1,7 +1,7 @@
 # -------- architecture -------------------------
-arch=OMP_a
-# arch=OMP_b
-# arch=OMP_c
+arch=OMPa
+# arch=OMPb
+# arch=OMPc
 # -------- model:vgg16/resnet18 -----------------
 # model=vgg11
 # model=vgg13
