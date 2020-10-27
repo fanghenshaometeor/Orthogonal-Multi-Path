@@ -14,6 +14,7 @@ import torch.utils.data as data
 import torch.optim as optim
 from torchvision import datasets, transforms
 
+import os
 import ast
 import argparse
 
@@ -154,7 +155,7 @@ def evaluate(net, trainloader, testloader):
             
             # ------- forward 
             _, all_logits = net(images, 'all')
-            for idx in range(args.num_classifiers):
+            for idx in range(args.num_paths):
                 logits = all_logits[idx]
                 logits = logits.detach()
                 _, pred = torch.max(logits.data, 1)
@@ -165,7 +166,7 @@ def evaluate(net, trainloader, testloader):
             images, labels = images.cuda(), labels.cuda()
             
             _, all_logits = net(images, 'all')
-            for idx in range(args.num_classifiers):
+            for idx in range(args.num_paths):
                 logits = all_logits[idx]
                 logits = logits.detach()
                 _, pred = torch.max(logits.data, 1)

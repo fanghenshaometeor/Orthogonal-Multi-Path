@@ -51,7 +51,7 @@ num_paths=10
 dataset=CIFAR10
 data_dir='/media/Disk1/KunFang/data/CIFAR10/'
 # -----------------------------------------------
-gpu_id=3
+gpu_id=0
 
 python test.py \
     --arch ${arch} \
