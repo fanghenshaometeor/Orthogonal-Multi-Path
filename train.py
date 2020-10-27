@@ -81,11 +81,17 @@ def main():
 
     # ======== initialize net
     if args.model == 'vgg11':
-        from model.OMP_c_vgg import vgg11_bn
-        net = vgg11_bn(args.num_classes, args.num_paths).cuda()
+        if args.arch == 'OMP_c':
+            from model.OMP_c_vgg import vgg11_bn
+            net = vgg11_bn(args.num_classes, args.num_paths).cuda()
+        else:
+            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'vgg13':
-        from model.OMP_c_vgg import vgg13_bn
-        net = vgg13_bn(args.num_classes, args.num_paths).cuda()
+        if args.arch == 'OMP_c':
+            from model.OMP_c_vgg import vgg13_bn
+            net = vgg13_bn(args.num_classes, args.num_paths).cuda()
+        else:
+            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'vgg16':
         if args.arch == 'OMP_a':
             from model.OMP_a_vgg import vgg16_bn
@@ -97,10 +103,13 @@ def main():
             from model.OMP_c_vgg import vgg16_bn
             net = vgg16_bn(args.num_classes, args.num_paths).cuda()
         else:
-            assert False, "Unknow architecture : {}".format(args.arch)
+            assert False, "Unknown architecture : {}".format(args.arch)
     elif args.model == 'vgg19':
-        from model.OMP_c_vgg import vgg19_bn
-        net = vgg19_bn(args.num_classes, args.num_paths).cuda()
+        if args.arch == 'OMP_c':
+            from model.OMP_c_vgg import vgg19_bn
+            net = vgg19_bn(args.num_classes, args.num_paths).cuda()
+        else:
+            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'resnet20':
         if args.arch == 'OMP_a':
             from model.OMP_a_resnet_v1 import resnet20
@@ -114,10 +123,13 @@ def main():
         else:
             assert False, "Unknown architecture : {}".format(args.arch)
     elif args.model == 'resnet32':
-        from model.OMP_c_resnet_v1 import resnet32
-        net = resnet32(args.num_classes, args.num_paths).cuda()
+        if args.arch == 'OMP_c':
+            from model.OMP_c_resnet_v1 import resnet32
+            net = resnet32(args.num_classes, args.num_paths).cuda()
+        else:
+            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     else:
-        assert False, "Unknow model : {}".format(args.model)
+        assert False, "Unknown model : {}".format(args.model)
     
     if args.adv_train:
         args.model_path = args.model_dir+args.dataset+'-'+args.arch+'-'+args.model+'-lamb-'+str(args.lamb)+'-path-'+str(args.num_paths)+'-adv.pth'
