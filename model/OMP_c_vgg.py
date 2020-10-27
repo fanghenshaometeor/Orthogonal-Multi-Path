@@ -79,6 +79,8 @@ def make_layers(cfg, batch_norm=False):
     
     return nn.Sequential(*layers)
 
+
+
 def vgg11_bn(num_classes=10, num_classifiers=10):
     return VGG(make_layers(cfg['A'], batch_norm=True), num_classes, num_classifiers)
 
