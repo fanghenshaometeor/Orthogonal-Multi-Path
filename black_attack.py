@@ -195,8 +195,6 @@ def pgd_attack(net, image, label, eps, alpha=0.01, iters=7, random_start=True, d
             perturbed_image.data = torch.max(torch.min(perturbed_image, image_max), image_min)
     perturbed_image.requires_grad = False
     
-
-    
     return perturbed_image, None
 
 
@@ -208,14 +206,6 @@ def attack(net, source_net, testloader, epsilon, attackType):
     net.eval()
     source_net.eval()
     
-    # initialization average perturbation
-    avg_perturbation = {}
-    avg_perturbation["linf"] = 0
-    avg_perturbation["l1"] = 0
-    avg_perturbation["l2"] = 0
-
-    # initialization average gradient sign
-    avg_grad_sign = 0
 
     for test in testloader:
         image, label = test

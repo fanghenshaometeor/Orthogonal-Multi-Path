@@ -143,7 +143,7 @@ def main():
             acc_fgsm.append(corr_te_fgsm/float(test_num))
 
         avg_acc_fgsm[idx,:] = avg_acc_fgsm[idx,:] + np.array(acc_fgsm)
-        print("acc. of model-%d under FGSM attack:"%idx)
+        print("acc. of path-%d under FGSM attack:"%idx)
         print(acc_fgsm)
 
         print('-------- START PGD ATTACK...')
@@ -153,7 +153,7 @@ def main():
             acc_pgd.append(corr_te_pgd/float(test_num))
 
         avg_acc_pgd[idx,:] = avg_acc_pgd[idx,:] + np.array(acc_pgd)
-        print("acc. of model-%d under PGD attack:"%idx)
+        print("acc. of path-%d under PGD attack:"%idx)
         print(acc_pgd)
     
     print('--------')
