@@ -73,19 +73,7 @@ def main():
 
     # ======== load network ========
     checkpoint = torch.load(args.model_path, map_location=torch.device("cpu"))
-    if args.model == 'vgg11':
-        if args.arch == 'OMPc':
-            from model.OMP_c_vgg import vgg11_bn
-            net = vgg11_bn(args.num_classes, args.num_paths).cuda()
-        else:
-            assert False, "Unsupported {}+{}".format(args.arch, args.model)
-    elif args.model == 'vgg13':
-        if args.arch == 'OMPc':
-            from model.OMP_c_vgg import vgg13_bn
-            net = vgg13_bn(args.num_classes, args.num_paths).cuda()
-        else:
-            assert False, "Unsupported {}+{}".format(args.arch, args.model)
-    elif args.model == 'vgg16':
+    if args.model == 'vgg16':
         if args.arch == 'OMPa':
             from model.OMP_a_vgg import vgg16_bn
             net = vgg16_bn(args.num_classes, args.num_paths).cuda()
@@ -97,12 +85,6 @@ def main():
             net = vgg16_bn(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unknown architecture : {}".format(args.arch)
-    elif args.model == 'vgg19':
-        if args.arch == 'OMPc':
-            from model.OMP_c_vgg import vgg19_bn
-            net = vgg19_bn(args.num_classes, args.num_paths).cuda()
-        else:
-            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     elif args.model == 'resnet20':
         if args.arch == 'OMPa':
             from model.OMP_a_resnet_v1 import resnet20
@@ -115,12 +97,6 @@ def main():
             net = resnet20(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unknown architecture : {}".format(args.arch)
-    elif args.model == 'resnet32':
-        if args.arch == 'OMPc':
-            from model.OMP_c_resnet_v1 import resnet32
-            net = resnet32(args.num_classes, args.num_paths).cuda()
-        else:
-            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     else:
         assert False, "Unknown model : {}".format(args.model)
     net.load_state_dict(checkpoint['state_dict'])
