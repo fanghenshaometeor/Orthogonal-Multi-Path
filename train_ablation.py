@@ -94,6 +94,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     args.epochs = 350
     # do NOT update the parameters in the paths
+    # do NOT update the parameters in the paths
     optimizer = optim.SGD(filter(lambda p: p.requires_grad, net.parameters()), lr=0.1, momentum=0.9, weight_decay=5e-4)
     scheduler = optim.lr_scheduler.MultiStepLR(optimizer,milestones=[150,250],gamma=0.1)
 

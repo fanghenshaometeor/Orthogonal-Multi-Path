@@ -10,7 +10,7 @@ model=vgg16
 # model=resnet20
 # model=resnet32
 # -------- hyper-parameters ---------------------
-lamb=0.01
+lamb=0.1
 num_paths=10
 # -------- CIFAR10 ------------------------------
 dataset=CIFAR10
