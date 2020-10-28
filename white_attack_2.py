@@ -204,6 +204,8 @@ def pgd_attack(net, idx, image, label, eps, alpha=0.01, iters=7, random_start=Tr
     return perturbed_image, None
 
 # -------- attack model --------
+# -------- attach the SELECTED path
+# -------- then reclassify using other path
 def attack(net, idx, testloader, epsilon, attackType):
 
     # correct = 0
