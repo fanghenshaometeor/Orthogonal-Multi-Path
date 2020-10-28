@@ -141,7 +141,7 @@ def main():
     for i,eps in enumerate(fgsm_epsilons):
         corr_te_fgsm, _, _ = attack(net, args.selected_path, testloader, eps, "FGSM")
         acc_fgsm[:,i] = corr_te_fgsm/float(test_num)
-    print("acc. under FGSM attack:")
+    print("acc. of other paths on the FGSM adversarial examples from the selected path:")
     print(acc_fgsm)
 
     print('-------- START PGD ATTACK...')
@@ -149,7 +149,7 @@ def main():
     for i,eps in enumerate(pgd_epsilons):
         corr_te_pgd, _, _ = attack(net, args.selected_path, testloader, eps, "PGD")
         acc_pgd[:,i] = corr_te_pgd/float(test_num)
-    print("acc. under PGD  attack:")
+    print("acc. of other paths on the PGD  adversarial examples from the selected path:")
     print(acc_pgd)
 
     return
