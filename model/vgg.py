@@ -25,15 +25,10 @@ class VGG(nn.Module):
         )
 
     def forward(self, x):
-        # output = self.features(x)
-        # output = output.view(output.size()[0], -1)
-        # output = self.classifier(output)
-        # return output
-
         feature = self.features(x)
         feature = feature.view(feature.size()[0], -1)
         logits = self.classifier(feature)
-        return feature, logits
+        return None, logits
 
 def make_layers(cfg, batch_norm=False):
     layers = []
@@ -44,7 +39,7 @@ def make_layers(cfg, batch_norm=False):
             layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
             continue
 
-        layers += [nn.Conv2d(input_channel, l, kernel_size=3, padding=1)]#, bias=False)]
+        layers += [nn.Conv2d(input_channel, l, kernel_size=3, padding=1)]
 
         if batch_norm:
             layers += [nn.BatchNorm2d(l)]
