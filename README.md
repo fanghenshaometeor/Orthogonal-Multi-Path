@@ -44,4 +44,23 @@ To evaluate the robustness of OMP model, users can run the attack scripts direct
 
 If u have problems about the codes or paper, u could contact me (fanghenshao@sjtu.edu.cn) or raise issues in GitHub.
 
-If u find the codes useful, welcome to fork and star this repo!
+If u find the codes useful, welcome to fork and star this repo and cite our paper! :)
+
+```
+@ARTICLE{2020arXiv201012190F,
+       author = {{Fang}, Kun and {Wu}, Yingwen and {Li}, Tao and {Huang}, Xiaolin and
+         {Yang}, Jie},
+        title = "{Learn Robust Features via Orthogonal Multi-Path}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning},
+         year = 2020,
+        month = oct,
+          eid = {arXiv:2010.12190},
+        pages = {arXiv:2010.12190},
+archivePrefix = {arXiv},
+       eprint = {2010.12190},
+ primaryClass = {cs.CV},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv201012190F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+```
