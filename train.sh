@@ -7,8 +7,9 @@ arch=OMPc
 # model=vgg13
 # model=vgg16
 # model=vgg19
-model=resnet20
+# model=resnet20
 # model=resnet32
+model=modela
 # -------- hyper-parameters ---------------------
 lamb=0.1
 num_paths=10
@@ -16,12 +17,15 @@ num_paths=10
 # dataset=CIFAR10
 # data_dir='/media/Disk1/KunFang/data/CIFAR10/'
 # -------- CIFAR100 -----------------------------
-dataset=CIFAR100
-data_dir='/media/Disk1/KunFang/data/CIFAR100/'
+# dataset=CIFAR100
+# data_dir='/media/Disk1/KunFang/data/CIFAR100/'
+# -------- STL10 --------------------------------
+dataset=STL10
+data_dir='/media/Disk1/KunFang/data/STL10/'
 # -------- model directory ----------------------
 model_dir='./save/'
 # -----------------------------------------------
-gpu_id=3
+gpu_id=1
 # -----------------------------------------------
 # adv_train=False
 adv_train=True

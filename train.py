@@ -81,6 +81,17 @@ def main():
         ])
         trainset = datasets.CIFAR100(root=args.data_dir, train=True, download=True, transform=transform_train)
         testset = datasets.CIFAR100(root=args.data_dir, train=False, download=True, transform=transform_test)
+    elif args.dataset == 'STL10':
+        transform_train = transforms.Compose([
+            transforms.RandomCrop(96, padding=4),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor()
+            ])
+        transform_test = transforms.Compose([
+            transforms.ToTensor(),
+            ])
+        trainset = datasets.STL10(root=args.data_dir, split='train', transform=transform_train, download=True)
+        testset = datasets.STL10(root=args.data_dir, split='test', transform=transform_test, download=True)
     else:
         assert False, "Unknow dataset : {}".format(args.dataset)
     
@@ -141,6 +152,12 @@ def main():
             net = resnet32(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unsupported {}+{}".format(args.arch, args.model)
+    elif args.model == 'modela':
+        if args.arch == 'OMPc':
+            from model.OMP_c_modela import ModelA
+            net = ModelA(args.num_classes, args.num_paths).cuda()
+        else:
+            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     else:
         assert False, "Unknown model : {}".format(args.model)
     
@@ -164,6 +181,10 @@ def main():
         args.epochs = 350
         optimizer = optim.SGD(net.parameters(), lr=0.1, momentum=0.9, weight_decay=5e-4)
         scheduler = optim.lr_scheduler.MultiStepLR(optimizer,milestones=[150,250],gamma=0.1)
+    elif args.model == 'modela':
+        args.epochs = 200 
+        optimizer = optim.SGD(net.parameters(), lr=0.05, momentum=0.9, weight_decay=5e-4)
+        scheduler = optim.lr_scheduler.MultiStepLR(optimizer, [60,120,160], gamma=0.1)
 
 
     print('-------- START TRAINING --------')
