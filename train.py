@@ -13,6 +13,7 @@ import torch.utils.data as data
 import torch.optim as optim
 from torchvision import datasets, transforms
 
+import os
 import ast
 import copy
 import time
@@ -68,6 +69,18 @@ def main():
         ])
         trainset = datasets.CIFAR10(root=args.data_dir, train=True, download=True, transform=transform_train)
         testset = datasets.CIFAR10(root=args.data_dir, train=False, download=True, transform=transform_test)
+    elif args.dataset == 'CIFAR100':
+        args.num_classes = 100
+        transform_train = transforms.Compose([
+            transforms.RandomCrop(32, padding=4),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor()
+        ])
+        transform_test = transforms.Compose([
+            transforms.ToTensor()
+        ])
+        trainset = datasets.CIFAR100(root=args.data_dir, train=True, download=True, transform=transform_train)
+        testset = datasets.CIFAR100(root=args.data_dir, train=False, download=True, transform=transform_test)
     else:
         assert False, "Unknow dataset : {}".format(args.dataset)
     
@@ -244,7 +257,7 @@ def train_epoch(net, trainloader, testloader, optim, criterion, epoch):
 
             total_loss = 0
             _, all_logits = net(perturbed_data, 'all')
-            for idx in range(args.paths):
+            for idx in range(args.num_paths):
                 logits = all_logits[idx]
                 loss_adv = criterion(logits, b_label)
                 avg_loss_tr_adv[idx] = avg_loss_tr_adv[idx] + loss_adv.item()       # save the loss value

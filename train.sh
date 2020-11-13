@@ -1,27 +1,30 @@
 # -------- architecture -------------------------
-arch=OMPa
+# arch=OMPa
 # arch=OMPb
-# arch=OMPc
+arch=OMPc
 # -------- model:vgg16/resnet18 -----------------
 # model=vgg11
 # model=vgg13
-model=vgg16
+# model=vgg16
 # model=vgg19
-# model=resnet20
+model=resnet20
 # model=resnet32
 # -------- hyper-parameters ---------------------
 lamb=0.1
 num_paths=10
 # -------- CIFAR10 ------------------------------
-dataset=CIFAR10
-data_dir='/media/Disk1/KunFang/data/CIFAR10/'
+# dataset=CIFAR10
+# data_dir='/media/Disk1/KunFang/data/CIFAR10/'
+# -------- CIFAR100 -----------------------------
+dataset=CIFAR100
+data_dir='/media/Disk1/KunFang/data/CIFAR100/'
 # -------- model directory ----------------------
 model_dir='./save/'
 # -----------------------------------------------
-gpu_id=2
+gpu_id=3
 # -----------------------------------------------
-adv_train=False
-# adv_train=True
+# adv_train=False
+adv_train=True
 # -----------------------------------------------
 
 python train.py \
