@@ -30,9 +30,11 @@ arch=OMPc
 # model_path='./save/CIFAR10-OMPc-vgg13-lamb-0.1-path-10.pth'
 # model_path='./save/CIFAR10-OMPc-vgg13-lamb-0.1-path-10-adv.pth'
 # ----
-model=vgg16
+# model=vgg16
 # model_path='./save/CIFAR10-OMPc-vgg16-lamb-0.1-path-10.pth'
-model_path='./save/CIFAR10-OMPc-vgg16-lamb-0.1-path-10-adv.pth'
+# model_path='./save/CIFAR10-OMPc-vgg16-lamb-0.1-path-10-adv.pth'
+# model_path='./save/CIFAR100-OMPc-vgg16-lamb-0.1-path-10.pth'
+# model_path='./save/CIFAR100-OMPc-vgg16-lamb-0.1-path-10-adv.pth'
 # ----
 # model=vgg19
 # model_path='./save/CIFAR10-OMPc-vgg19-lamb-0.1-path-10.pth'
@@ -41,15 +43,27 @@ model_path='./save/CIFAR10-OMPc-vgg16-lamb-0.1-path-10-adv.pth'
 # model=resnet20
 # model_path='./save/CIFAR10-OMPc-resnet20-lamb-0.1-path-10.pth'
 # model_path='./save/CIFAR10-OMPc-resnet20-lamb-0.1-path-10-adv.pth'
+# model_path='./save/CIFAR100-OMPc-resnet20-lamb-0.1-path-10.pth'
+# model_path='./save/CIFAR100-OMPc-resnet20-lamb-0.1-path-10-adv.pth'
 # ----
 # model=resnet32
 # model_path='./save/CIFAR10-OMPc-resnet32-lamb-0.1-path-10.pth'
 # model_path='./save/CIFAR10-OMPc-resnet32-lamb-0.1-path-10-adv.pth'
+# ----
+model=modela
+# model_path='./save/STL10-OMPc-modela-lamb-0.1-path-10.pth'
+model_path='./save/STL10-OMPc-modela-lamb-0.1-path-10-adv.pth'
 # -------- hyper-parameters ---------------------
 num_paths=10
 # -------- CIFAR10 ------------------------------
-dataset=CIFAR10
-data_dir='/media/Disk1/KunFang/data/CIFAR10/'
+# dataset=CIFAR10
+# data_dir='/media/Disk1/KunFang/data/CIFAR10/'
+# -------- CIFAR100 -----------------------------
+# dataset=CIFAR100
+# data_dir='/media/Disk1/KunFang/data/CIFAR100/'
+# -------- STL10 --------------------------------
+dataset=STL10
+data_dir='/media/Disk1/KunFang/data/STL10/'
 # -----------------------------------------------
 gpu_id=0
 

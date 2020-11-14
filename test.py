@@ -59,6 +59,19 @@ def main():
         ])
         trainset = datasets.CIFAR10(root=args.data_dir, train=True, download=True, transform=transform)
         testset = datasets.CIFAR10(root=args.data_dir, train=False, download=True, transform=transform)
+    elif args.dataset == 'CIFAR100':
+        args.num_classes = 100
+        transform = transforms.Compose([
+            transforms.ToTensor()
+        ])
+        trainset = datasets.CIFAR100(root=args.data_dir, train=True, download=True, transform=transform)
+        testset = datasets.CIFAR100(root=args.data_dir, train=False, download=True, transform=transform)
+    elif args.dataset == 'STL10':
+        transform = transforms.Compose([
+            transforms.ToTensor()
+        ])
+        trainset = datasets.STL10(root=args.data_dir, split='train', transform=transform, download=True)
+        testset = datasets.STL10(root=args.data_dir, split='test', transform=transform, download=True)
     else:
         assert False, "Unknow dataset : {}".format(args.dataset)
     trainloader = data.DataLoader(trainset, batch_size=args.batch_size, shuffle=False)
@@ -119,6 +132,12 @@ def main():
             net = resnet32(args.num_classes, args.num_paths).cuda()
         else:
             assert False, "Unsupported {}+{}".format(args.arch, args.model)
+    elif args.model == 'modela':
+        if args.arch == 'OMPc':
+            from model.OMP_c_modela import ModelA
+            net = ModelA(args.num_classes, args.num_paths).cuda()
+        else:
+            assert False, "Unsupported {}+{}".format(args.arch, args.model)
     else:
         assert False, "Unknown model : {}".format(args.model)
     net.load_state_dict(checkpoint['state_dict'])
@@ -134,8 +153,10 @@ def main():
     corr_tr, corr_te = evaluate(net, trainloader, testloader)
     print('Train acc. of each path:')
     print('     ', corr_tr/train_num)
+    print('      mean = %f; std. = %f.'%((corr_tr/train_num).mean(), (corr_tr/train_num).std()))
     print('Test  acc. of each path:')
     print('     ', corr_te/test_num)
+    print('      mean = %f; std. = %f.'%((corr_te/test_num).mean(), (corr_te/test_num).std()))
 
     return
 
