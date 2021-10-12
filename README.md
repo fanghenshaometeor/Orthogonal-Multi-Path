@@ -1,8 +1,12 @@
 # Orthogonal-Multi-Path
 
-This repo provides the PyTorch codes for the paper [*Learn Robust Features via Orthogonal Multi-Path*](https://arxiv.org/abs/2010.12190)
+This repo provides the PyTorch codes for the paper [*Learn Robust Features via Orthogonal Multi-Path*](https://arxiv.org/abs/2010.12190v1)
 
-# Dependencies
+Please refer to [*repo*](https://github.com/fanghenshaometeor/Diversity-Via-Orthogonality) for the newest work, [*Towards Robust Neural Networks Via Orthogonal Diversity*](https://arxiv.org/abs/2010.12190).
+
+This repo will no longer get updated.
+
+<!-- # Dependencies
 - python 3.6 (miniconda)
 - PyTorch 1.5.0
 
@@ -63,4 +67,4 @@ archivePrefix = {arXiv},
        adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv201012190F},
       adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
-```
+``` -->
