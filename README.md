@@ -1,8 +1,8 @@
 # Orthogonal-Multi-Path
 
-This repo provides the PyTorch codes for the paper [*Learn Robust Features via Orthogonal Multi-Path*](https://arxiv.org/abs/2010.12190v1)
+This repo provides the PyTorch codes for the paper [*Learn Robust Features via Orthogonal Multi-Path*](https://arxiv.org/abs/2010.12190v1).
 
-Please refer to [*repo*](https://github.com/fanghenshaometeor/Diversity-Via-Orthogonality) for the newest work, [*Towards Robust Neural Networks Via Orthogonal Diversity*](https://arxiv.org/abs/2010.12190).
+Please refer to [*repo*](https://github.com/fanghenshaometeor/Diversity-Via-Orthogonality) for the latest work, [*Towards Robust Neural Networks Via Orthogonal Diversity*](https://arxiv.org/abs/2010.12190).
 
 This repo will no longer get updated.
 
